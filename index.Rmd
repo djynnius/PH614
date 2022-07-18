@@ -1,0 +1,147 @@
+---
+title: 'PH614: 01. Data First look'
+author: 'UMB/DEPH'
+date: '2022'
+output:
+    slidy_presentation:
+        include:
+            in_header: 'code/code.html'
+        css: ['code/monokai.min.css', 'code/code.css']
+---
+
+
+## Learning Objectives  
+- Understand what SAS is 
+- Importing data into SAS  
+- The SAS workspace 
+- How to learn a new programing language  
+- The basic construct of SAS  
+- What to do when you get a new data set  
+
+## Course structure  
+- We will be using web presentations  
+- SAS code shells will be included for download and will help follow the class 
+  
+
+## Understanding SAS    
+- SAS is both a programing language of stattistical data analysis and a program  
+- SAS versions  
+    + SAS desktop  
+    + SAS on demand: https://welcome.oda.sas.com  
+- There are some differences in setting up, upoading data, initial setup  
+- The language is syntax is consistent accross all platforms  
+- One of the grat things about using programing languages is your code is reusable!  
+
+## Getting data into SAS  
+- Open the SAS program  
+- Click on import data as CSV   
+- Follow the wizard  
+    + Click on 
+
+## Libraries and datasets  
+- Desktop **folders** and **files** in the file system are how we navigate to find things  
+- SAS has a similar construct with **libraries** and **datasets** 
+- SAS **libraries** are like desktop **folders**  
+- SAS **datasets** are like desktop **files**  
+- You need to create libraries on SAS for your datasets  
+- Not creating libraries means datasets get stored in a default library called **WORK**  
+- The WORK library getsdeleted each time we close the SAS application  
+- When creating a dataset the only limitation is the name should be limited to eight characters  
+
+## The SAS workspace  
+- The default SAS workspace has the following windows 
+    + The expolorer in the left that lets us look throught the desktop filesystem and SAS libraries  
+    + Code window: where you write code    
+    + Log window: that tells you if your code ran successfully  or if there was some warning of an error or if your code completely failed to run    
+    + Results window: where you view the result of your code   
+    + Data window: where you view datasets    
+
+## SAS programing construct  
+- SAS language commands has two major branches 
+    + Procedures (**PROC**) 
+    + Data  (**DATA**)
+    + Every instruction line ends in a semicolon **;**  
+    + Every code block (set of instructions) ends with the key word **RUN**  
+
+## How to learn a new programing language  
+- Understand the language construct: 
+1. Data types  
+2. Operators  
+3. Control structure: logic  
+4. Control structure: loops  
+5. Functions 
+
+## How we will be learning SAS  
+- Data types  
+- Manipulating data (data wrangling) 
+    + Operators 
+    + logic 
+- Analysing single variables 
+- Analysing variable pairs 
+- Visualizing data 
+- Testing hypotheses 
+
+## Data types  
+- Quantitative (numeric) data
+    + Coninuous data - no clear separation of levels or too many levels:
+        + Weight - 170.3, 182.4, 193.22, 172.0,  ...
+        + Age - range from 0 to 100  
+    + Count (Discrete) data  - clear distinction between levels:
+        + Number of days in on admission in hospital - 3, 5, 2, 4, 0, 1, 1, 2, ...
+- Qualitative (categorical) data  
+    + Binary data (2 levels only)  
+        + Sex - male, female, female, female, male, female, ...
+        + Status - dead, alive, alive, alive, alive, alive, dead, alive, ...
+        + Smoker - yes, no, no , yes, yes, no, yes, no, no, yes, yes, ...
+    + Nominal data (named data with no inherent order)  
+        + State_of_residence - MD, AZ, NY, NY, VA, CA, TX, TX, NY, ...
+    + Ordinal data (named data with inherent order) 
+        + sizes - small, medium, small, large, large, small, extra large, medium, small, ... 
+
+## Typical structure of datasets  
+- Think about an excel spreadsheet 
+- It has columns and rows  
+- The columns represent variables in your dataset 
+- The rows represent information about each assessment 
+- If 20 people were queried about their age, sex, occupation the dataset would have:
+    + 3 columns (one each for age, sex and occupation)
+    + 20 rows (for each person assessed)
+
+## Exploring a newly imported dataset  
+- You want to get the documentation for the dataset so you know what the dataset is about and what the variables mean  
+- You want to know how many **variables** (columns) are in the dataset 
+- How many **observations** (rows) in the dataset 
+- Which variables are quantitative (numerical) and which are qualitative (categorical)  
+
+## Exploring data with SAS  
+- Get a summary of the data  
+```SAS
+PROC CONTENTS DATA=PH614.NHANES;
+RUN;  
+```  
+- View the first few observations  
+```SAS
+/*This code lets you view the first 10 observations, 
+as this prevents your computer from trying to load all 
+the datra at once which may be too much to look at at once
+*/
+PROC PRINT DATA=PH614.NHANES (OBS=10);
+RUN;
+```
+
+## Review of learning objectives  
+
+## Q&A  
+
+## Whats Next  
+
+## Finished!
+
+
+
+Firtlook
+Data wrangling 
+Univariate
+Bivariate
+Visualization
+Hypothesis testing
