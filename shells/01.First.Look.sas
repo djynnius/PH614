@@ -1,7 +1,12 @@
 /**/
 
-*This is a comment;
-/*This is a multiline comment*/
+*This is a single line comment;
+
+/*
+This is a multiline 
+comment
+*/
+
 
 *Example PROCEDURE code;
 PROC CONTENTS DATA=lib.dataset;
@@ -31,7 +36,7 @@ RUN;
 
 
 
-*3. 
+*3. Explore the dataset;
 
 
 
