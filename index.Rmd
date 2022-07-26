@@ -99,21 +99,15 @@ output:
 - The language is syntax is consistent across all platforms 
 - One of the great things about using programming languages is that your code is reusable! 
  
-## Getting data into SAS 
-- Open the SAS program 
-- Click on import data as CSV  
-- Follow the wizard 
-   + Click on
- 
 ## Libraries and datasets 
-- Desktop **folders** and **files** in the file system are how we navigate to find things 
+- When on our Windows computer we navigate through **folders** to get to **files** on the file system  
 - SAS has a similar construct with **libraries** and **datasets**
 - SAS **libraries** are like desktop **folders** 
 - SAS **datasets** are like desktop **files** 
 - You need to create libraries on SAS for your datasets 
 - Not creating libraries means datasets get stored in a default library called **WORK** 
 - The WORK library gets deleted each time we close the SAS application 
-- When creating a dataset the only limitation is the name should be limited to eight characters 
+- When creating a dataset the only limitation is the name cannot exceed eight characters 
  
 ## The SAS workspace 
 - The default SAS workspace has the following windows
@@ -124,12 +118,13 @@ output:
    + Data window: where you view datasets   
  
 ## SAS programing construct and syntax  
-- SAS language commands has two major branches
+- SAS code is written in blocks made up of at least two lines  
+- Every instruction line ends in a semicolon **;** 
+- Every code block (set of instructions) ends with the key word **RUN**
+- The SAS language has two major branches
    + Procedures (**PROC**)
-   + Data  (**DATA**)
-   + Every instruction line ends in a semicolon **;** 
-   + Every code block (set of instructions) ends with the key word **RUN** 
-- SAS is not case sensitive, you will notice most of the code in this course will be written in a style that emphasizes key words in upper case
+   + Data  (**DATA**)  
+- While SAS is not case sensitive, you will notice most of the code in this course will be written in a style that emphasizes key words in upper case  
 - SAS code can be written in lower case or mixed case 
  
  
@@ -145,7 +140,7 @@ output:
 PROC CONTENTS DATA=PH614.NHANES;
 RUN; 
 ``` 
-- View all variables of the first few observations 
+- View all variables of the first ten observations 
 ```SAS
 /*
 This code lets you view the first 10 observations,
@@ -155,9 +150,9 @@ the data at once which may be too much to look at at once
 PROC PRINT DATA=PH614.NHANES (OBS=10);
 RUN;
 ``` 
-- View selected variables from the first few observations 
+- View selected variables from the first eight observations 
 ```SAS
-PROC PRINT DATA=PH614.NHANES (OBS=10);
+PROC PRINT DATA=PH614.NHANES (OBS=8);
 VAR Age, Weight, Education, Race1;
 RUN;
 ```
@@ -194,16 +189,16 @@ RUN;
    + Creating new data from existing data **SET**
    + Variable manipulation **RENAME, KEEP, DROP**
    + Observation filtering **IF, THEN, ELSE, END, WHERE**  
-   + Operators 
-       + Assignment
-       + Mathematical
-       + Comparison
-       + Logical
-       + Operator precedence 
+   + Symbols (operators) 
+       + Assignment (=)
+       + Mathematical (+, -, *, /, NE, <>)
+       + Comparison (=, GT, LT, GE, LE, >, <, >=, <=)
+       + Logical (&, |)
+       + Operator precedence (PEMDAS)
    + Sorting data
    + Merging data 
-       + Horizontal 
-       + Vertical
+       + Horizontal merge
+       + Vertical merge 
    + Formatting and values
  
 ## Study

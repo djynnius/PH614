@@ -96,7 +96,7 @@ Professional Skills for Public Health
 <ul>
 <li>Variables</li>
 <li>Observations</li>
-<li>Operators</li>
+<li>Symbols</li>
 <li>Logic with <strong>IF - THEN - ELSE</strong> statements</li>
 </ul></li>
 <li>Exploring and analyzing single variables (univariate analysis)</li>
@@ -176,29 +176,18 @@ Professional Skills for Public Health
 <li>One of the great things about using programming languages is that your code is reusable!</li>
 </ul>
 </div>
-<div id="getting-data-into-sas" class="slide section level2">
-<h1>Getting data into SAS</h1>
-<ul>
-<li>Open the SAS program</li>
-<li>Click on import data as CSV<br />
-</li>
-<li>Follow the wizard
-<ul>
-<li>Click on</li>
-</ul></li>
-</ul>
-</div>
 <div id="libraries-and-datasets" class="slide section level2">
 <h1>Libraries and datasets</h1>
 <ul>
-<li>Desktop <strong>folders</strong> and <strong>files</strong> in the file system are how we navigate to find things</li>
+<li>When on our Windows computer we navigate through <strong>folders</strong> to get to <strong>files</strong> on the file system<br />
+</li>
 <li>SAS has a similar construct with <strong>libraries</strong> and <strong>datasets</strong></li>
 <li>SAS <strong>libraries</strong> are like desktop <strong>folders</strong></li>
 <li>SAS <strong>datasets</strong> are like desktop <strong>files</strong></li>
 <li>You need to create libraries on SAS for your datasets</li>
 <li>Not creating libraries means datasets get stored in a default library called <strong>WORK</strong></li>
 <li>The WORK library gets deleted each time we close the SAS application</li>
-<li>When creating a dataset the only limitation is the name should be limited to eight characters</li>
+<li>When creating a dataset the only limitation is the name cannot exceed eight characters</li>
 </ul>
 </div>
 <div id="the-sas-workspace" class="slide section level2">
@@ -220,14 +209,18 @@ Professional Skills for Public Health
 <div id="sas-programing-construct-and-syntax" class="slide section level2">
 <h1>SAS programing construct and syntax</h1>
 <ul>
-<li>SAS language commands has two major branches
-<ul>
-<li>Procedures (<strong>PROC</strong>)</li>
-<li>Data (<strong>DATA</strong>)</li>
+<li>SAS code is written in blocks made up of at least two lines<br />
+</li>
 <li>Every instruction line ends in a semicolon <strong>;</strong></li>
 <li>Every code block (set of instructions) ends with the key word <strong>RUN</strong></li>
+<li>The SAS language has two major branches
+<ul>
+<li>Procedures (<strong>PROC</strong>)</li>
+<li>Data (<strong>DATA</strong>)<br />
+</li>
 </ul></li>
-<li>SAS is not case sensitive, you will notice most of the code in this course will be written in a style that emphasizes key words in upper case</li>
+<li>While SAS is not case sensitive, you will notice most of the code in this course will be written in a style that emphasizes key words in upper case<br />
+</li>
 <li>SAS code can be written in lower case or mixed case</li>
 </ul>
 </div>
@@ -248,7 +241,7 @@ Professional Skills for Public Health
 <pre class="sas"><code>PROC CONTENTS DATA=PH614.NHANES;
 RUN; </code></pre>
 <ul>
-<li>View all variables of the first few observations</li>
+<li>View all variables of the first ten observations</li>
 </ul>
 <pre class="sas"><code>/*
 This code lets you view the first 10 observations,
@@ -258,9 +251,9 @@ the data at once which may be too much to look at at once
 PROC PRINT DATA=PH614.NHANES (OBS=10);
 RUN;</code></pre>
 <ul>
-<li>View selected variables from the first few observations</li>
+<li>View selected variables from the first eight observations</li>
 </ul>
-<pre class="sas"><code>PROC PRINT DATA=PH614.NHANES (OBS=10);
+<pre class="sas"><code>PROC PRINT DATA=PH614.NHANES (OBS=8);
 VAR Age, Weight, Education, Race1;
 RUN;</code></pre>
 </div>
@@ -306,19 +299,19 @@ RUN;</code></pre>
 <li>Variable manipulation <strong>RENAME, KEEP, DROP</strong></li>
 <li>Observation filtering <strong>IF, THEN, ELSE, END, WHERE</strong><br />
 </li>
-<li>Operators
+<li>Symbols (operators)
 <ul>
-<li>Assignment</li>
-<li>Mathematical</li>
-<li>Comparison</li>
-<li>Logical</li>
-<li>Operator precedence</li>
+<li>Assignment (=)</li>
+<li>Mathematical (+, -, *, /, NE, &lt;&gt;)</li>
+<li>Comparison (=, GT, LT, GE, LE, &gt;, &lt;, &gt;=, &lt;=)</li>
+<li>Logical (&amp;, |)</li>
+<li>Operator precedence (PEMDAS)</li>
 </ul></li>
 <li>Sorting data</li>
 <li>Merging data
 <ul>
-<li>Horizontal</li>
-<li>Vertical</li>
+<li>Horizontal merge</li>
+<li>Vertical merge</li>
 </ul></li>
 <li>Formatting and values</li>
 </ul></li>
