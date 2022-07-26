@@ -9,6 +9,7 @@ comment
 
 
 *Example PROCEDURE code;
+*This code wont run it is only meant as an example;
 PROC CONTENTS DATA=ph614.dataset;
 RUN;
 
@@ -22,28 +23,28 @@ and end the line with a semicolon ;
 */
 
 *Example DATA code;
-DATA ph614.dataset;
+*This code wont run it is only meant as an example;
+DATA ph614.new_data;
+SET ph614.old_data;
 RUN;
 
 
 
-*1. Create a named library;
+*1. Create a library and name it PH614;
+*No code required;
 
 
-
-*2. Import the NHANES CSV dataset;
-
+*2. Import the NHANES_mini.csv dataset;
+*No code required;
 
 
 *3. Explore the dataset report the number of variables;
 
 
-
 *4. Explore the dataset report the number of observations;
 
 
-
-*5. print the first 20 records in the dataset ***hint: in the procedure line include (OBS=20) before the semicolon;
+*5. print the first 20 records in the dataset ***hint: in the PROC line include (OBS=20) before the semicolon;
 
 
 /*
