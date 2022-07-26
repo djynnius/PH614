@@ -1,197 +1,215 @@
 ---
 title: 'PH614: 01. Data First look'
-author: 'UMB/DEPH'
+author: 'Professional Skills for Public Health'
+footer: 'PH614: Professional Skills for Public Health | MPH | University of Maryland Baltimore'
 date: '2022'
 output:
-    slidy_presentation:
-        include:
-            in_header: 'code/code.html'
-        css: ['code/atom-one-light.css', 'code/code.css']
+   slidy_presentation:
+       include:
+           in_header: 'code/code.html'
+       css: ['code/atom-one-light.css', 'code/code.css']
 ---
-
-
-## Learning Objectives  
-- Understand what SAS is 
-- Be able to import data into SAS  
-- Understand the SAS workspace  
-- Understand the construct and basic syntax of SAS  
-- What to do when you get a new data set  
-
-## Course structure  
-- We will be using web presentations  
-- SAS code shells will be included for download and will help follow the class 
-
-## How to learn a new programing language  
-- Understand the language construct: 
-1. Data types  
-2. Operators  
-3. Control structure: logic  
-4. Control structure: loops  
-5. Functions 
-
-## How we will be learning SAS  
-- Data types  
-- Manipulating data 
-    + Variables 
-    + Observations 
-    + Operators 
-    + Logic with **IF - THEN - ELSE** statements
-- Exploring and analysing single variables (univariate analysis)  
-- Exploring and analysing variable pairs (bivariate analysis) 
-- Visualizing data 
-- Testing hypotheses 
-
-## All about data    
-- We will start by creating our own dataset 
-    + Link to data entry form  
-- Opportunity to get a sense of how data is captured 
-
-
-## Typical structure of datasets  
-- Think about an excel spreadsheet, it has columns and rows  
-- The columns represent variables in your dataset 
-- The rows represent information about each assessment 
+ 
+ 
+## Learning Objectives 
+- Understand what SAS is
+- Be able to import data into SAS 
+- Understand the SAS workspace 
+- Understand the construct and basic syntax of SAS 
+- What to do when you get a new data set 
+ 
+## Course structure 
+- We will be using web presentations 
+- SAS code shells will be included for download and will help follow the class
+ 
+## Research 
+- All research starts with a question
+- A study is then designed to investigate the question and a potential hypothesis (what you believe to be true) 
+- Data is collected - prospectively or retrospectively 
+- Data is analyzed  and the hypothesis tested against a null hypothesis (what is currently known to be true) 
+   + Statistical applications  
+       + SPSS
+       + Stata
+       + **SAS**
+   + Statistical languages 
+       + Python 
+       + R
+       + **SAS** 
+- Results are interpreted and disseminated 
+ 
+ 
+## How to learn a new programing language 
+- Understand the language construct:
+1. Data types 
+2. Operators 
+3. Control structure: logic 
+4. Control structure: loops 
+5. Functions
+ 
+## How we will be learning SAS 
+- Data types 
+- Manipulating data
+   + Variables
+   + Observations
+   + Operators
+   + Logic with **IF - THEN - ELSE** statements
+- Exploring and analyzing single variables (univariate analysis) 
+- Exploring and analyzing variable pairs (bivariate analysis)
+- Visualizing data
+- Testing hypotheses
+ 
+## All about data   
+- We will start by creating our own dataset
+   + Link to data entry form 
+- Opportunity to get a sense of how data is captured
+ 
+ 
+## Typical structure of datasets 
+- Think about an excel spreadsheet, it has columns and rows 
+- The columns represent variables in your dataset
+- The rows represent information about each assessment
 - If 20 people were asked about their age, sex, occupation the dataset would have:
-    + 3 columns (one each for age, sex and occupation)
-    + 20 rows (for each person assessed)
-
-## Data types  
+   + 3 columns (one each for age, sex and occupation)
+   + 20 rows (for each person assessed)
+ 
+## Data types 
 - Quantitative (numeric) data
-    + Continuous data - no clear separation of levels or too many levels:
-        + Weight - 170.3, 182.4, 193.22, 172.0,  ...
-        + Age - range from 0 to 100  
-    + Count (Discrete) data  - clear distinction between levels:
-        + Number of days in on admission in hospital - 3, 5, 2, 4, 0, 1, 1, 2, ...
-- Qualitative (categorical) data  
-    + Binary data (2 levels only)  
-        + Sex - male, female, female, female, male, female, ...
-        + Status - dead, alive, alive, alive, alive, alive, dead, alive, ...
-        + Smoker - yes, no, no , yes, yes, no, yes, no, no, yes, yes, ...
-    + Nominal data (named data with no inherent order)  
-        + State_of_residence - MD, AZ, NY, NY, VA, CA, TX, TX, NY, ...
-    + Ordinal data (named data with inherent order) 
-        + sizes - small, medium, small, large, large, small, extra large, medium, small, ... 
-
-
-## Understanding SAS    
-- SAS is both a programing language of stattistical data analysis and a program  
-- SAS versions  
-    + SAS desktop  
-    + SAS on demand: https://welcome.oda.sas.com  
-- There are some differences in setting up, upoading data, initial setup  
-- The language is syntax is consistent accross all platforms  
-- One of the grat things about using programing languages is your code is reusable!  
-
-## Getting data into SAS  
-- Open the SAS program  
-- Click on import data as CSV   
-- Follow the wizard  
-    + Click on 
-
-## Libraries and datasets  
-- Desktop **folders** and **files** in the file system are how we navigate to find things  
-- SAS has a similar construct with **libraries** and **datasets** 
-- SAS **libraries** are like desktop **folders**  
-- SAS **datasets** are like desktop **files**  
-- You need to create libraries on SAS for your datasets  
-- Not creating libraries means datasets get stored in a default library called **WORK**  
-- The WORK library getsdeleted each time we close the SAS application  
-- When creating a dataset the only limitation is the name should be limited to eight characters  
-
-## The SAS workspace  
-- The default SAS workspace has the following windows 
-    + The expolorer in the left that lets us look throught the desktop filesystem and SAS libraries  
-    + Code window: where you write code    
-    + Log window: that tells you if your code ran successfully  or if there was some warning of an error or if your code completely failed to run    
-    + Results window: where you view the result of your code   
-    + Data window: where you view datasets    
-
-## SAS programing construct and syntax   
-- SAS language commands has two major branches 
-    + Procedures (**PROC**) 
-    + Data  (**DATA**)
-    + Every instruction line ends in a semicolon **;**  
-    + Every code block (set of instructions) ends with the key word **RUN**  
-- SAS is not case sensitive, you will notice most of the code in this course will be written in a style that emphasizes key words in upper case 
-- SAS code can be written in lower case or mixed case  
-
-
-## Exploring a newly imported dataset  
-- You want to get the documentation for the dataset so you know what the dataset is about and what the variables mean  
-- You want to know how many **variables** (columns) are in the dataset 
-- How many **observations** (rows) in the dataset 
-- Which variables are quantitative (numerical) and which are qualitative (categorical)  
-
-## Exploring data with SAS  
-- Get a summary of the data  
+   + Continuous data - no clear separation of levels or too many levels:
+       + Weight - 170.3, 182.4, 193.22, 172.0,  ...
+       + Age - range from 0 to 100 
+   + Count (Discrete) data  - clear distinction between levels:
+       + Number of days in on admission in hospital - 3, 5, 2, 4, 0, 1, 1, 2, ...
+- Qualitative (categorical) data 
+   + Binary data (2 levels only) 
+       + Sex - male, female, female, female, male, female, ...
+       + Status - dead, alive, alive, alive, alive, alive, dead, alive, ...
+       + Smoker - yes, no, no , yes, yes, no, yes, no, no, yes, yes, ...
+   + Nominal data (named data with no inherent order) 
+       + State_of_residence - MD, AZ, NY, NY, VA, CA, TX, TX, NY, ...
+   + Ordinal data (named data with inherent order)
+       + sizes - small, medium, small, large, large, small, extra large, medium, small, ...
+ 
+ 
+## Understanding SAS   
+- SAS is both a programing language of statistical data analysis and a program 
+- SAS versions 
+   + SAS desktop 
+   + SAS on demand: https://welcome.oda.sas.com 
+- There are some differences in setting up, uploading data, initial setup 
+- The language is syntax is consistent across all platforms 
+- One of the great things about using programming languages is that your code is reusable! 
+ 
+## Getting data into SAS 
+- Open the SAS program 
+- Click on import data as CSV  
+- Follow the wizard 
+   + Click on
+ 
+## Libraries and datasets 
+- Desktop **folders** and **files** in the file system are how we navigate to find things 
+- SAS has a similar construct with **libraries** and **datasets**
+- SAS **libraries** are like desktop **folders** 
+- SAS **datasets** are like desktop **files** 
+- You need to create libraries on SAS for your datasets 
+- Not creating libraries means datasets get stored in a default library called **WORK** 
+- The WORK library gets deleted each time we close the SAS application 
+- When creating a dataset the only limitation is the name should be limited to eight characters 
+ 
+## The SAS workspace 
+- The default SAS workspace has the following windows
+   + The explorer in the left that lets us look through the desktop filesystem and SAS libraries 
+   + Code window: where you write code   
+   + Log window: that tells you if your code ran successfully  or if there was some warning of an error or if your code completely failed to run   
+   + Results window: where you view the result of your code  
+   + Data window: where you view datasets   
+ 
+## SAS programing construct and syntax  
+- SAS language commands has two major branches
+   + Procedures (**PROC**)
+   + Data  (**DATA**)
+   + Every instruction line ends in a semicolon **;** 
+   + Every code block (set of instructions) ends with the key word **RUN** 
+- SAS is not case sensitive, you will notice most of the code in this course will be written in a style that emphasizes key words in upper case
+- SAS code can be written in lower case or mixed case 
+ 
+ 
+## Exploring a newly imported dataset 
+- You want to get the documentation for the dataset so you know what the dataset is about and what the variables mean 
+- You want to know how many **variables** (columns) are in the dataset
+- How many **observations** (rows) in the dataset
+- Which variables are quantitative (numerical) and which are qualitative (categorical) 
+ 
+## Exploring data with SAS 
+- Get a summary of the data 
 ```SAS
 PROC CONTENTS DATA=PH614.NHANES;
-RUN;  
-```  
-- View all variables of the first few observations  
+RUN; 
+``` 
+- View all variables of the first few observations 
 ```SAS
 /*
-This code lets you view the first 10 observations, 
-as this prevents your computer from trying to load all 
-the datra at once which may be too much to look at at once
+This code lets you view the first 10 observations,
+as this prevents your computer from trying to load all
+the data at once which may be too much to look at at once
 */
 PROC PRINT DATA=PH614.NHANES (OBS=10);
 RUN;
-```  
-- View selected variables from the first few observations  
+``` 
+- View selected variables from the first few observations 
 ```SAS
 PROC PRINT DATA=PH614.NHANES (OBS=10);
 VAR Age, Weight, Education, Race1;
 RUN;
 ```
+ 
+ 
+## Comments and commenting code 
+- Comments are written in SAS in two ways: 
+   + Single line comments are typically written between an asterix and a semi colon `*;`
+   ```SAS
+   *Single line comment;
+   ```
+   + multiline comments are commonly written between delimiters `\*...*\`
+   ```SAS
+   /*
+       The lines go here
+       As many as you want
+       ...
+   */
+   ```
+- It is good practice to comment your code that way it can be shared and others will understand what your code does 
+- Well commented code is easy to understand in the future by the coder 
+ 
+## Review of learning objectives 
+- Understand what SAS is
+- Be able to import data into SAS 
+- Understand the SAS workspace 
+- Understand the construct and basic syntax of SAS 
+- What to do when you get a new data set 
+ 
+## Q&A 
+ 
+## Whats Next 
+- Data wrangling - our focus will be on the **DATA** steps  
+   + Creating new data from existing data **SET**
+   + Variable manipulation **RENAME, KEEP, DROP**
+   + Observation filtering **IF, THEN, ELSE, END, WHERE**  
+   + Operators 
+       + Assignment
+       + Mathematical
+       + Comparison
+       + Logical
+       + Operator precedence 
+   + Sorting data
+   + Merging data 
+       + Horizontal 
+       + Vertical
+   + Formatting and values
+ 
+## Study
+- SAS code shell 
+- Datasets for this class 
+ 
+ 
+## Finished! 
 
-
-## Comments and commenting code  
-- Comments are writen in SAS in two ways:  
-    + Single line comments are typically written between an asterix and a semi colon `*;`
-    ```SAS
-    *Single line comment;
-    ```
-    + multiline comments are commonly writen between delimiters `\*...*\`
-    ```SAS
-    /*
-        The lines go here 
-        As many as you want
-        ...
-    */
-    ```
-- It is good practice to comment your code that way it can be shared and others will understand what your code doesn or what you intended  
-- Well commented code is easy to understand in the future by the coder  
-
-## Review of learning objectives  
-- Understand what SAS is 
-- Be able to import data into SAS  
-- Understand the SAS workspace  
-- Understand the construct and basic syntax of SAS  
-- What to do when you get a new data set  
-
-## Q&A  
-
-## Whats Next  
-- Data wrangling - our focus will be on the **DATA** steps   
-    + Creating new data from existing data **SET** 
-    + Variable manipulation **RENAME, KEEP, DROP** 
-    + Observation filtering **IF, THEN, ELSE, END, WHERE**   
-    + Operators  
-        + Assignment 
-        + Mathematical 
-        + Comparison 
-        + Logical 
-        + Operator precedence  
-    + Sorting data 
-    + Merging data  
-        + Horizonatal  
-        + Vertical
-    + Formatting and values 
-
-## Study 
-- SAS code shell  
-- Datasets for this class  
-
-
-## Finished!  

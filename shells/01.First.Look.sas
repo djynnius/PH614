@@ -17,7 +17,7 @@ PROC
 followed by 
 THE_PROCEDURE_YOU_WANT_TO_PERFORM
 then 
-DATA=LIBRARY.DATASET_YOU_WANT_TO_USE
+DATA=LIBRARY.DATASET_YOU_WANT_TO_PERFORM_THE_PROCEDURE_ON
 and end the line with a semicolon ;
 */
 
@@ -43,5 +43,21 @@ RUN;
 
 
 
-*5. print the first 20 records in the dataset;
+*5. print the first 20 records in the dataset ***hint: in the procedure line include (OBS=20) before the semicolon;
+
+
+/*
+CHEATSHEET OF PROCEDURES
+CONTENT -- view general information about the dataset
+PRINT -- view the dataset in the results window
+UNIVARIATE -- analysis a numeric variable
+MEANS -- analyse a numeric variable 
+FREQ  -- analyse one or more categorical variables 
+CORR -- check to see if two or more numeric variables are correlated 
+SGPLOT -- visualize data 
+REG -- regression 
+ANOVA -- Analysis of variance 
+SORT -- sort your data  
+SQL -- run SQL in SAS!
+*/
 
