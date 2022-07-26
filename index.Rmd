@@ -12,28 +12,52 @@ output:
 
 ## Learning Objectives  
 - Understand what SAS is 
-- Importing data into SAS  
-- The SAS workspace 
-- How to learn a new programing language  
-- The basic construct of SAS  
+- Be able to import data into SAS  
+- Understand the SAS workspace  
+- Understand the construct and basic syntax of SAS  
 - What to do when you get a new data set  
 
 ## Course structure  
 - We will be using web presentations  
 - SAS code shells will be included for download and will help follow the class 
 
+## How to learn a new programing language  
+- Understand the language construct: 
+1. Data types  
+2. Operators  
+3. Control structure: logic  
+4. Control structure: loops  
+5. Functions 
+
+## How we will be learning SAS  
+- Data types  
+- Manipulating data 
+    + Variables 
+    + Observations 
+    + Operators 
+    + Logic with **IF - THEN - ELSE** statements
+- Exploring and analysing single variables (univariate analysis)  
+- Exploring and analysing variable pairs (bivariate analysis) 
+- Visualizing data 
+- Testing hypotheses 
+
+## All about data    
+- We will start by creating our own dataset 
+    + Link to data entry form  
+- Opportunity to get a sense of how data is captured 
+
+
 ## Typical structure of datasets  
-- Think about an excel spreadsheet 
-- It has columns and rows  
+- Think about an excel spreadsheet, it has columns and rows  
 - The columns represent variables in your dataset 
 - The rows represent information about each assessment 
-- If 20 people were queried about their age, sex, occupation the dataset would have:
+- If 20 people were asked about their age, sex, occupation the dataset would have:
     + 3 columns (one each for age, sex and occupation)
     + 20 rows (for each person assessed)
 
 ## Data types  
 - Quantitative (numeric) data
-    + Coninuous data - no clear separation of levels or too many levels:
+    + Continuous data - no clear separation of levels or too many levels:
         + Weight - 170.3, 182.4, 193.22, 172.0,  ...
         + Age - range from 0 to 100  
     + Count (Discrete) data  - clear distinction between levels:
@@ -48,25 +72,6 @@ output:
     + Ordinal data (named data with inherent order) 
         + sizes - small, medium, small, large, large, small, extra large, medium, small, ... 
 
-## How to learn a new programing language  
-- Understand the language construct: 
-1. Data types  
-2. Operators  
-3. Control structure: logic  
-4. Control structure: loops  
-5. Functions 
-
-## How we will be learning SAS  
-- Data types  
-- Manipulating data (data wrangling) 
-    + variables 
-    + observations 
-    + Operators 
-    + logic 
-- Exploring and analysing single variables (univariate analysis)  
-- Exploring and analysing variable pairs (bivariate analysis) 
-- Visualizing data 
-- Testing hypotheses 
 
 ## Understanding SAS    
 - SAS is both a programing language of stattistical data analysis and a program  
@@ -160,10 +165,9 @@ RUN;
 
 ## Review of learning objectives  
 - Understand what SAS is 
-- Importing data into SAS  
-- The SAS workspace 
-- How to learn a new programing language  
-- The basic construct of SAS  
+- Be able to import data into SAS  
+- Understand the SAS workspace  
+- Understand the construct and basic syntax of SAS  
 - What to do when you get a new data set  
 
 ## Q&A  
