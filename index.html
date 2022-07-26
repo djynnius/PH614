@@ -5,8 +5,9 @@
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <meta http-equiv="Content-Style-Type" content="text/css" />
   <meta name="generator" content="pandoc" />
-  <meta name="author" content="UMB/DEPH" />
+  <meta name="author" content="Professional Skills for Public Health" />
   <meta name="date" content="2022-01-01" />
+  <meta name="copyright" content="PH614: Professional Skills for Public Health | MPH | University of Maryland Baltimore" />
   <title>PH614: 01. Data First look</title>
   <style type="text/css">
     code{white-space: pre-wrap;}
@@ -29,7 +30,7 @@
 <div class="slide titlepage">
   <h1 class="title">PH614: 01. Data First look</h1>
   <p class="author">
-UMB/DEPH
+Professional Skills for Public Health
   </p>
   <p class="date">2022</p>
 </div>
@@ -37,21 +38,41 @@ UMB/DEPH
 <h1>Learning Objectives</h1>
 <ul>
 <li>Understand what SAS is</li>
-<li>Be able to import data into SAS<br />
-</li>
-<li>Understand the SAS workspace<br />
-</li>
-<li>Understand the construct and basic syntax of SAS<br />
-</li>
+<li>Be able to import data into SAS</li>
+<li>Understand the SAS workspace</li>
+<li>Understand the construct and basic syntax of SAS</li>
 <li>What to do when you get a new data set</li>
 </ul>
 </div>
 <div id="course-structure" class="slide section level2">
 <h1>Course structure</h1>
 <ul>
-<li>We will be using web presentations<br />
-</li>
+<li>We will be using web presentations</li>
 <li>SAS code shells will be included for download and will help follow the class</li>
+</ul>
+</div>
+<div id="research" class="slide section level2">
+<h1>Research</h1>
+<ul>
+<li>All research starts with a question</li>
+<li>A study is then designed to investigate the question and a potential hypothesis (what you believe to be true)</li>
+<li>Data is collected - prospectively or retrospectively</li>
+<li>Data is analyzed and the hypothesis tested against a null hypothesis (what is currently known to be true)
+<ul>
+<li>Statistical applications
+<ul>
+<li>SPSS</li>
+<li>Stata</li>
+<li><strong>SAS</strong></li>
+</ul></li>
+<li>Statistical languages
+<ul>
+<li>Python</li>
+<li>R</li>
+<li><strong>SAS</strong></li>
+</ul></li>
+</ul></li>
+<li>Results are interpreted and disseminated</li>
 </ul>
 </div>
 <div id="how-to-learn-a-new-programing-language" class="slide section level2">
@@ -60,22 +81,17 @@ UMB/DEPH
 <li>Understand the language construct:</li>
 </ul>
 <ol style="list-style-type: decimal">
-<li>Data types<br />
-</li>
-<li>Operators<br />
-</li>
-<li>Control structure: logic<br />
-</li>
-<li>Control structure: loops<br />
-</li>
+<li>Data types</li>
+<li>Operators</li>
+<li>Control structure: logic</li>
+<li>Control structure: loops</li>
 <li>Functions</li>
 </ol>
 </div>
 <div id="how-we-will-be-learning-sas" class="slide section level2">
 <h1>How we will be learning SAS</h1>
 <ul>
-<li>Data types<br />
-</li>
+<li>Data types</li>
 <li>Manipulating data
 <ul>
 <li>Variables</li>
@@ -83,9 +99,8 @@ UMB/DEPH
 <li>Operators</li>
 <li>Logic with <strong>IF - THEN - ELSE</strong> statements</li>
 </ul></li>
-<li>Exploring and analysing single variables (univariate analysis)<br />
-</li>
-<li>Exploring and analysing variable pairs (bivariate analysis)</li>
+<li>Exploring and analyzing single variables (univariate analysis)</li>
+<li>Exploring and analyzing variable pairs (bivariate analysis)</li>
 <li>Visualizing data</li>
 <li>Testing hypotheses</li>
 </ul>
@@ -95,8 +110,7 @@ UMB/DEPH
 <ul>
 <li>We will start by creating our own dataset
 <ul>
-<li>Link to data entry form<br />
-</li>
+<li>Link to data entry form</li>
 </ul></li>
 <li>Opportunity to get a sense of how data is captured</li>
 </ul>
@@ -104,8 +118,7 @@ UMB/DEPH
 <div id="typical-structure-of-datasets" class="slide section level2">
 <h1>Typical structure of datasets</h1>
 <ul>
-<li>Think about an excel spreadsheet, it has columns and rows<br />
-</li>
+<li>Think about an excel spreadsheet, it has columns and rows</li>
 <li>The columns represent variables in your dataset</li>
 <li>The rows represent information about each assessment</li>
 <li>If 20 people were asked about their age, sex, occupation the dataset would have:
@@ -123,8 +136,7 @@ UMB/DEPH
 <li>Continuous data - no clear separation of levels or too many levels:
 <ul>
 <li>Weight - 170.3, 182.4, 193.22, 172.0, …</li>
-<li>Age - range from 0 to 100<br />
-</li>
+<li>Age - range from 0 to 100</li>
 </ul></li>
 <li>Count (Discrete) data - clear distinction between levels:
 <ul>
@@ -153,27 +165,21 @@ UMB/DEPH
 <div id="understanding-sas" class="slide section level2">
 <h1>Understanding SAS</h1>
 <ul>
-<li>SAS is both a programing language of stattistical data analysis and a program<br />
-</li>
+<li>SAS is both a programing language of statistical data analysis and a program</li>
 <li>SAS versions
 <ul>
-<li>SAS desktop<br />
-</li>
-<li>SAS on demand: <a href="https://welcome.oda.sas.com" class="uri">https://welcome.oda.sas.com</a><br />
-</li>
+<li>SAS desktop</li>
+<li>SAS on demand: <a href="https://welcome.oda.sas.com" class="uri">https://welcome.oda.sas.com</a></li>
 </ul></li>
-<li>There are some differences in setting up, upoading data, initial setup<br />
-</li>
-<li>The language is syntax is consistent accross all platforms<br />
-</li>
-<li>One of the grat things about using programing languages is your code is reusable!</li>
+<li>There are some differences in setting up, uploading data, initial setup</li>
+<li>The language is syntax is consistent across all platforms</li>
+<li>One of the great things about using programming languages is that your code is reusable!</li>
 </ul>
 </div>
 <div id="getting-data-into-sas" class="slide section level2">
 <h1>Getting data into SAS</h1>
 <ul>
-<li>Open the SAS program<br />
-</li>
+<li>Open the SAS program</li>
 <li>Click on import data as CSV<br />
 </li>
 <li>Follow the wizard
@@ -185,19 +191,13 @@ UMB/DEPH
 <div id="libraries-and-datasets" class="slide section level2">
 <h1>Libraries and datasets</h1>
 <ul>
-<li>Desktop <strong>folders</strong> and <strong>files</strong> in the file system are how we navigate to find things<br />
-</li>
+<li>Desktop <strong>folders</strong> and <strong>files</strong> in the file system are how we navigate to find things</li>
 <li>SAS has a similar construct with <strong>libraries</strong> and <strong>datasets</strong></li>
-<li>SAS <strong>libraries</strong> are like desktop <strong>folders</strong><br />
-</li>
-<li>SAS <strong>datasets</strong> are like desktop <strong>files</strong><br />
-</li>
-<li>You need to create libraries on SAS for your datasets<br />
-</li>
-<li>Not creating libraries means datasets get stored in a default library called <strong>WORK</strong><br />
-</li>
-<li>The WORK library getsdeleted each time we close the SAS application<br />
-</li>
+<li>SAS <strong>libraries</strong> are like desktop <strong>folders</strong></li>
+<li>SAS <strong>datasets</strong> are like desktop <strong>files</strong></li>
+<li>You need to create libraries on SAS for your datasets</li>
+<li>Not creating libraries means datasets get stored in a default library called <strong>WORK</strong></li>
+<li>The WORK library gets deleted each time we close the SAS application</li>
 <li>When creating a dataset the only limitation is the name should be limited to eight characters</li>
 </ul>
 </div>
@@ -206,8 +206,7 @@ UMB/DEPH
 <ul>
 <li>The default SAS workspace has the following windows
 <ul>
-<li>The expolorer in the left that lets us look throught the desktop filesystem and SAS libraries<br />
-</li>
+<li>The explorer in the left that lets us look through the desktop filesystem and SAS libraries</li>
 <li>Code window: where you write code<br />
 </li>
 <li>Log window: that tells you if your code ran successfully or if there was some warning of an error or if your code completely failed to run<br />
@@ -225,10 +224,8 @@ UMB/DEPH
 <ul>
 <li>Procedures (<strong>PROC</strong>)</li>
 <li>Data (<strong>DATA</strong>)</li>
-<li>Every instruction line ends in a semicolon <strong>;</strong><br />
-</li>
-<li>Every code block (set of instructions) ends with the key word <strong>RUN</strong><br />
-</li>
+<li>Every instruction line ends in a semicolon <strong>;</strong></li>
+<li>Every code block (set of instructions) ends with the key word <strong>RUN</strong></li>
 </ul></li>
 <li>SAS is not case sensitive, you will notice most of the code in this course will be written in a style that emphasizes key words in upper case</li>
 <li>SAS code can be written in lower case or mixed case</li>
@@ -237,8 +234,7 @@ UMB/DEPH
 <div id="exploring-a-newly-imported-dataset" class="slide section level2">
 <h1>Exploring a newly imported dataset</h1>
 <ul>
-<li>You want to get the documentation for the dataset so you know what the dataset is about and what the variables mean<br />
-</li>
+<li>You want to get the documentation for the dataset so you know what the dataset is about and what the variables mean</li>
 <li>You want to know how many <strong>variables</strong> (columns) are in the dataset</li>
 <li>How many <strong>observations</strong> (rows) in the dataset</li>
 <li>Which variables are quantitative (numerical) and which are qualitative (categorical)</li>
@@ -247,25 +243,22 @@ UMB/DEPH
 <div id="exploring-data-with-sas" class="slide section level2">
 <h1>Exploring data with SAS</h1>
 <ul>
-<li>Get a summary of the data<br />
-</li>
+<li>Get a summary of the data</li>
 </ul>
 <pre class="sas"><code>PROC CONTENTS DATA=PH614.NHANES;
-RUN;  </code></pre>
+RUN; </code></pre>
 <ul>
-<li>View all variables of the first few observations<br />
-</li>
+<li>View all variables of the first few observations</li>
 </ul>
 <pre class="sas"><code>/*
-This code lets you view the first 10 observations, 
-as this prevents your computer from trying to load all 
-the datra at once which may be too much to look at at once
+This code lets you view the first 10 observations,
+as this prevents your computer from trying to load all
+the data at once which may be too much to look at at once
 */
 PROC PRINT DATA=PH614.NHANES (OBS=10);
 RUN;</code></pre>
 <ul>
-<li>View selected variables from the first few observations<br />
-</li>
+<li>View selected variables from the first few observations</li>
 </ul>
 <pre class="sas"><code>PROC PRINT DATA=PH614.NHANES (OBS=10);
 VAR Age, Weight, Education, Race1;
@@ -274,21 +267,20 @@ RUN;</code></pre>
 <div id="comments-and-commenting-code" class="slide section level2">
 <h1>Comments and commenting code</h1>
 <ul>
-<li>Comments are writen in SAS in two ways:
+<li>Comments are written in SAS in two ways:
 <ul>
 <li>Single line comments are typically written between an asterix and a semi colon <code>*;</code></li>
 </ul>
 <pre class="sas"><code>*Single line comment;</code></pre>
 <ul>
-<li>multiline comments are commonly writen between delimiters <code>\*...*\</code></li>
+<li>multiline comments are commonly written between delimiters <code>\*...*\</code></li>
 </ul>
 <pre class="sas"><code>/*
-    The lines go here 
+    The lines go here
     As many as you want
     ...
 */</code></pre></li>
-<li>It is good practice to comment your code that way it can be shared and others will understand what your code doesn or what you intended<br />
-</li>
+<li>It is good practice to comment your code that way it can be shared and others will understand what your code does</li>
 <li>Well commented code is easy to understand in the future by the coder</li>
 </ul>
 </div>
@@ -296,12 +288,9 @@ RUN;</code></pre>
 <h1>Review of learning objectives</h1>
 <ul>
 <li>Understand what SAS is</li>
-<li>Be able to import data into SAS<br />
-</li>
-<li>Understand the SAS workspace<br />
-</li>
-<li>Understand the construct and basic syntax of SAS<br />
-</li>
+<li>Be able to import data into SAS</li>
+<li>Understand the SAS workspace</li>
+<li>Understand the construct and basic syntax of SAS</li>
 <li>What to do when you get a new data set</li>
 </ul>
 </div>
@@ -323,14 +312,12 @@ RUN;</code></pre>
 <li>Mathematical</li>
 <li>Comparison</li>
 <li>Logical</li>
-<li>Operator precedence<br />
-</li>
+<li>Operator precedence</li>
 </ul></li>
 <li>Sorting data</li>
 <li>Merging data
 <ul>
-<li>Horizonatal<br />
-</li>
+<li>Horizontal</li>
 <li>Vertical</li>
 </ul></li>
 <li>Formatting and values</li>
@@ -340,8 +327,7 @@ RUN;</code></pre>
 <div id="study" class="slide section level2">
 <h1>Study</h1>
 <ul>
-<li>SAS code shell<br />
-</li>
+<li>SAS code shell</li>
 <li>Datasets for this class</li>
 </ul>
 </div>

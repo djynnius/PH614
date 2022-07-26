@@ -51,7 +51,7 @@ output:
 - Manipulating data
    + Variables
    + Observations
-   + Operators
+   + Symbols
    + Logic with **IF - THEN - ELSE** statements
 - Exploring and analyzing single variables (univariate analysis) 
 - Exploring and analyzing variable pairs (bivariate analysis)
