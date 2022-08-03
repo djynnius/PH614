@@ -763,7 +763,7 @@ RUN;</code></pre>
 <li>New data sets not prefixed with a library name will be temporary!</li>
 <li>To make a permanent dataset make sure the library you want it to be in exists then…</li>
 </ul>
-<pre class="sas"><code>DATA lib.new_data;
+<pre class="sas"><code>DATA PH614.new_data;
 RUN;</code></pre>
 </div>
 <div id="creating-a-new-data-set-from-an-existing-data-set" class="slide section level2">
@@ -772,12 +772,12 @@ RUN;</code></pre>
 <li>Often we use existing data as the basis for our dataset in SAS. To do this we use the <strong>SET</strong> keyword</li>
 </ul>
 <pre class="sas"><code>*Create a new data set;
-DATA lib.new_data;
-SET lib.existing_data;
+DATA PH614.new_data2;
+SET PH614.NHANES_mini;
 RUN;
  
 *Look at your log and next run PROC CONTENTS to see if the new dataset was created correctly;
-PROC CONTENTS DATA=lib.new_data;
+PROC CONTENTS DATA=PH614.new_data2;
 RUN;</code></pre>
 <ul>
 <li>Note every time you use the <strong>DATA</strong> step you create a new dataset and if the name already exists it will overwrite the existing dataset!!! Watch out for this.</li>
@@ -791,13 +791,13 @@ RUN;</code></pre>
 <li>Use the <strong>RENAME</strong> keyword followed by old_var_name=new_var_name</li>
 <li>You can have multiple of these rename pairs as you need</li>
 </ul>
-<pre class="sas"><code>DATA PH614.new_data;
-SET PH614.existing_data;
+<pre class="sas"><code>DATA PH614.new_data3;
+SET PH614.NHANES_mini;
 RENAME Sex=Gender Ethnicity=Race Education=Tranining;
 RUN;
  
 *Look at your log and next run PROC CONTENTS to see what changed;
-PROC CONTENTS DATA=lib.new_data;
+PROC CONTENTS DATA=PH614.new_data3;
 RUN;</code></pre>
 </div>
 <div id="keeping-variables" class="slide section level2">
@@ -807,13 +807,13 @@ RUN;</code></pre>
 <li>You can decide to keep some out of several variables in a new dataset without losing your original dataset</li>
 <li>To keep some variables use the keyword <strong>KEEP</strong></li>
 </ul>
-<pre class="sas"><code>DATA PH614.new_data;
-SET PH614.existing_data;
+<pre class="sas"><code>DATA PH614.new_data4;
+SET PH614.NHANES_mini;
 KEEP Age Sex Race Education;
 RUN;
  
 *Look at your log and next run PROC CONTENTS to see what variables are kept;
-PROC CONTENTS DATA=lib.new_data;
+PROC CONTENTS DATA=PH614.new_data4;
 RUN;</code></pre>
 </div>
 <div id="dropping-variables" class="slide section level2">
@@ -822,13 +822,13 @@ RUN;</code></pre>
 <li>This is the opposite of keeping and serves where you want to drop a few variables you are not interested in</li>
 <li>The <strong>DROP</strong> keyword is what is required to achieve this</li>
 </ul>
-<pre class="sas"><code>DATA PH614.new_data;
-SET PH614.existing_data;
+<pre class="sas"><code>DATA PH614.new_data5;
+SET PH614.NHANES_mini;
 DROP Weight Height;
 RUN;
  
 *Look at your log and next run PROC CONTENTS to see what changed;
-PROC CONTENTS DATA=lib.new_data;
+PROC CONTENTS DATA=PH614.new_data5;
 RUN;</code></pre>
 </div>
 <div id="combining-variable-manipulation" class="slide section level2">
@@ -837,14 +837,14 @@ RUN;</code></pre>
 <li>You can combine the variable manipulation steps as required.</li>
 <li>Make sure you end each step with a semicolon</li>
 </ul>
-<pre class="sas"><code>DATA PH614.new_data;
-SET PH614.existing_data;
+<pre class="sas"><code>DATA PH614.new_data6;
+SET PH614.NHANES_mini;
 KEEP Age Sex Race Education Weight Height;
 RENAME Sex=Gender;
 RUN;
  
 *Look at your log and next run PROC CONTENTS to see what changed;
-PROC CONTENTS DATA=lib.new_data;
+PROC CONTENTS DATA=PH614.new_data6;
 RUN;</code></pre>
 </div>
 <div id="operators" class="slide section level2">
@@ -853,14 +853,14 @@ RUN;</code></pre>
 <li>SAS lets you carry out a couple of operations</li>
 <li>First, let’s use the assignment operator <strong>=</strong> to create a new variable and set its value</li>
 </ul>
-<pre class="sas"><code>DATA PH614.new_data;
-SET PH614.existing_data;
+<pre class="sas"><code>DATA PH614.new_data7;
+SET PH614.NHANES_mini;
 Test = 4; *Numbers are written without quotes;
 Annother_test = &quot;Hello&quot;; *Non-numbers are written with quotes;
 RUN;
  
 *Look at your log and next run PROC CONTENTS to see what changed;
-PROC CONTENTS DATA=lib.new_data;
+PROC CONTENTS DATA=PH614.new_data7;
 RUN;</code></pre>
 </div>
 <div id="mathematical-operators" class="slide section level2">
@@ -871,13 +871,13 @@ RUN;</code></pre>
 </li>
 <li>let’s explore this</li>
 </ul>
-<pre class="sas"><code>DATA PH614.new_data;
-SET PH614.existing_data;
+<pre class="sas"><code>DATA PH614.new_data8;
+SET PH614.NHANES_mini;
 BMI = Weight/(Height*Height);
 RUN;
  
 *Look at your log and next run PROC CONTENTS to see what changed;
-PROC CONTENTS DATA=lib.new_data;
+PROC CONTENTS DATA=PH614.new_data8;
 RUN;</code></pre>
 </div>
 <div id="sas-if-then-else-logic" class="slide section level2">
@@ -888,15 +888,15 @@ RUN;</code></pre>
 <li>Using this construct we can check for truth and decide to do something ifa properpere condition is met</li>
 <li>the typical construct uses the words <strong>IF</strong> condition <strong>THEN</strong> do something; Let’s see an example</li>
 </ul>
-<pre class="sas"><code>DATA new_data;
-SET existing_data;
+<pre class="sas"><code>DATA PH614.new_data9;
+SET PH614.NHANES_mini;
 IF Age &lt; 18 THEN Age_group = &quot;Child&quot;;
 ELSE IF 18 &lt;= Age &lt;= 60 THEN Age_group = &quot;Adult&quot;;
 ELSE Age_group = &quot;Elder&quot;;
 RUN;
  
 *Look at your log and next run PROC CONTENTS to see what changed;
-PROC CONTENTS DATA=lib.new_data;
+PROC CONTENTS DATA=PH614.new_data9;
 RUN;</code></pre>
 <ul>
 <li>The statement may be written without the <strong>ELSE IF</strong> and <strong>ELSE</strong> portions</li>
@@ -907,13 +907,13 @@ RUN;</code></pre>
 <ul>
 <li>We can filter based on a variable using the IF statement</li>
 </ul>
-<pre class="sas"><code>DATA new_data;
-SET existing_data;
+<pre class="sas"><code>DATA PH614.new_data10;
+SET PH614.NHANES_mini;
 IF Sex = &#39;Male&#39;;
 RUN;
  
 *Look at your log and next run PROC CONTENTS to see what changed;
-PROC CONTENTS DATA=lib.new_data;
+PROC CONTENTS DATA=PH614.new_data10;
 RUN;</code></pre>
 </div>
 <div id="filtering-data-using-the-where-clause" class="slide section level2">
@@ -921,13 +921,13 @@ RUN;</code></pre>
 <ul>
 <li>We can filter based on a variable using the IF statement</li>
 </ul>
-<pre class="sas"><code>DATA new_data;
-SET existing_data;
+<pre class="sas"><code>DATA PH614.new_data11;
+SET PH614.NHANES_mini;
 WHERE Sex = &#39;Male&#39;;
 RUN;
  
 *Look at your log and next run PROC CONTENTS to see what changed;
-PROC CONTENTS DATA=lib.new_data;
+PROC CONTENTS DATA=PH614.new_data11;
 RUN;</code></pre>
 </div>
 <div id="sorting-datasets" class="slide section level2">
@@ -936,12 +936,12 @@ RUN;</code></pre>
 <li>To sort a dataset you use the <strong>PROC</strong> command not the DATA command</li>
 <li>You can determine which variable to sort on</li>
 </ul>
-<pre class="sas"><code>PROC SORT DATA=PH614.NHANES_mini;
+<pre class="sas"><code>PROC SORT DATA=PH614.new_data10;
 BY Age;
 RUN;
  
 *Look at your log and next run PROC CONTENTS to see what changed;
-PROC CONTENTS DATA=lib.new_data;
+PROC CONTENTS DATA=PH614.new_data10;
 RUN;</code></pre>
 </div>
 <div id="review-of-learning-objectives" class="slide section level2">
