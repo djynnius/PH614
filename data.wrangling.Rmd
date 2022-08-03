@@ -4,148 +4,147 @@ author: 'Professional Skills for Public Health'
 footer: 'PH614: Professional Skills for Public Health | MPH | University of Maryland Baltimore'
 date: '2022'
 output:
-   slidy_presentation:
-       include:
-           in_header: 'code/code.html'
-       css: ['code/atom-one-light.css', 'code/code.css']
+  slidy_presentation:
+      include:
+          in_header: 'code/code.html'
+      css: ['code/atom-one-light.css', 'code/code.css']
 ---
-
-## Learning Objectives  
-- Create new data sets  
-- Rename variables  
-- Select variables 
-- Drop variables  
-- Understand operators 
-- Filter data with logic 
-- Creating new variables  
-- Sort data  
-- Formating vatiables 
-
-## The Data step  
-- SAS lets you create new data sets each time you use the **DATA** step  
+ 
+## Learning Objectives 
+- Create new data sets 
+- Rename variables 
+- Select variables
+- Drop variables 
+- Understand operators
+- Filter data with logic
+- Creating new variables 
+- Sort data 
+ 
+## The Data step 
+- SAS lets you create new data sets each time you use the **DATA** step 
 - Typical structure of the DATA step is:
-```SAS 
+```SAS
 *This is a blank temporary dataset;
 DATA new_data;
 RUN;
-``` 
-- New data sets not prefixed with a library name will be temorary! 
-- To make a permanent dataset make sure the library you want it to be in exists then...  
+```
+- New data sets not prefixed with a library name will be temporary!
+- To make a permanent dataset make sure the library you want it to be in exists then... 
 ```SAS
 DATA lib.new_data;
 RUN;
 ```
-
-## Creating a new data set from an existing data set  
-- Often we use existing data as the basis for our dataset in SAS. To do this we use the **SET** keyword  
+ 
+## Creating a new data set from an existing data set 
+- Often we use existing data as the basis for our dataset in SAS. To do this we use the **SET** keyword 
 ```SAS
-*Create a new data set; 
+*Create a new data set;
 DATA lib.new_data;
 SET lib.existing_data;
 RUN;
-
-*Look at your log and next run PROC CONTENTS to see if the new dataset was properly created;
+ 
+*Look at your log and next run PROC CONTENTS to see if the new dataset was created correctly;
 PROC CONTENTS DATA=lib.new_data;
 RUN;
 ```
-- Note every time you use the **DATA** step you create a new dataset and if the name already exists it will overwrite the existing dataset!!! Watch out for this.  
-
-
-## Rename Variables  
-- There are times you want your variable to have a more prepresentative name  
-- You can rename the variables, the caveat is there can only be alphabets, numbers and underscores in the variables names and they should only begin with letters  
-- Use the **RENAME** keyword followed by old_var_name=new_var_name 
-- You can have multiple of these rename pairs as you need  
-```SAS  
+- Note every time you use the **DATA** step you create a new dataset and if the name already exists it will overwrite the existing dataset!!! Watch out for this. 
+ 
+ 
+## Rename Variables 
+- There are times you want your variable to have a more representative name 
+- You can rename the variables, the caveat is there can only be alphabets, numbers, and underscores in the variable's names and they should only begin with letters 
+- Use the **RENAME** keyword followed by old_var_name=new_var_name
+- You can have multiple of these rename pairs as you need 
+```SAS 
 DATA PH614.new_data;
 SET PH614.existing_data;
-RENAME Sex=Gender Ethnicity=Race Education=Tranining; 
+RENAME Sex=Gender Ethnicity=Race Education=Tranining;
 RUN;
-
+ 
 *Look at your log and next run PROC CONTENTS to see what changed;
 PROC CONTENTS DATA=lib.new_data;
 RUN;
-```  
-
-## Keeping variables  
-- There are times when you are not interested in all the variables in a dataset  
-- You can decide to keep some out of several variables in a new dataset without losing your original dataset  
-- To keep some variables use the keyword **KEEP**  
-```SAS  
+``` 
+ 
+## Keeping variables 
+- There are times when you are not interested in all the variables in a dataset 
+- You can decide to keep some out of several variables in a new dataset without losing your original dataset 
+- To keep some variables use the keyword **KEEP** 
+```SAS 
 DATA PH614.new_data;
 SET PH614.existing_data;
 KEEP Age Sex Race Education;
 RUN;
-
+ 
 *Look at your log and next run PROC CONTENTS to see what variables are kept;
 PROC CONTENTS DATA=lib.new_data;
 RUN;
-```  
-
-## Droping vaariables  
-- This is the opposite of keeping, and serves where you want to drop a few variables you are not interested in  
-- The **DROP** keyword is what is required to achieve this  
-```SAS  
+``` 
+ 
+## Dropping variables 
+- This is the opposite of keeping and serves where you want to drop a few variables you are not interested in 
+- The **DROP** keyword is what is required to achieve this 
+```SAS 
 DATA PH614.new_data;
 SET PH614.existing_data;
 DROP Weight Height;
 RUN;
-
+ 
 *Look at your log and next run PROC CONTENTS to see what changed;
 PROC CONTENTS DATA=lib.new_data;
 RUN;
-```  
-
-## Combining variable manipulation  
-- You can combine the variable manipulation steps as required.  
-- Make sure you end each step with a semi colon  
-```SAS  
+``` 
+ 
+## Combining variable manipulation 
+- You can combine the variable manipulation steps as required. 
+- Make sure you end each step with a semicolon 
+```SAS 
 DATA PH614.new_data;
 SET PH614.existing_data;
 KEEP Age Sex Race Education Weight Height;
 RENAME Sex=Gender;
 RUN;
-
+ 
 *Look at your log and next run PROC CONTENTS to see what changed;
 PROC CONTENTS DATA=lib.new_data;
 RUN;
-```  
-
-## Operators 
-- SAS lets you carry out a couple of a few operations  
-- First lets use the assignment operator **=** to create a new variable and set its value 
-```SAS 
+``` 
+ 
+## Operators
+- SAS lets you carry out a couple of operations 
+- First, let's use the assignment operator **=** to create a new variable and set its value
+```SAS
 DATA PH614.new_data;
 SET PH614.existing_data;
-Test = 4; *Numbers are writen without quotes;
-Annother_test = "Hello"; *Non numbers are written with quotes;
+Test = 4; *Numbers are written without quotes;
+Annother_test = "Hello"; *Non-numbers are written with quotes;
 RUN;
-
+ 
 *Look at your log and next run PROC CONTENTS to see what changed;
 PROC CONTENTS DATA=lib.new_data;
 RUN;
 ```
-
-## Mathematical operators  
-- SAS supports mathematical operators including **+**, **-**, **/**, **\*** 
-- SAS also supports operator precedence (PEMDAS)   
-- Lets explore this 
-```SAS 
+ 
+## Mathematical operators 
+- SAS supports mathematical operators including **+**, **-**, **/**, **\***
+- SAS also supports operator precedence (PEMDAS)  
+- let's explore this
+```SAS
 DATA PH614.new_data;
 SET PH614.existing_data;
-BMI = Weight/(Height*Height); 
+BMI = Weight/(Height*Height);
 RUN;
-
+ 
 *Look at your log and next run PROC CONTENTS to see what changed;
 PROC CONTENTS DATA=lib.new_data;
 RUN;
 ```
-
-## SAS IF-THEN-ELSE logic  
-- Apart from mathematical operators, SAS supports comparision operators such as **>**, **<**, **>=**, **<=**  
-- SAS as a programing language has provisions for logic an decision points  
-- Using this construct we can check for truth and decide to do something if a true condition is met  
-- the typical construct uses the words **IF** condition **THEN** do something; Lets see an example  
+ 
+## SAS IF-THEN-ELSE logic 
+- Apart from mathematical operators, SAS supports comparison operators such as **>**, **<**, **>=**, **<=** 
+- SAS as a programing language has provisions for logic and decision points 
+- Using this construct we can check for truth and decide to do something ifa properpere condition is met 
+- the typical construct uses the words **IF** condition **THEN** do something; Let's see an example 
 ```SAS
 DATA new_data;
 SET existing_data;
@@ -153,46 +152,70 @@ IF Age < 18 THEN Age_group = "Child";
 ELSE IF 18 <= Age <= 60 THEN Age_group = "Adult";
 ELSE Age_group = "Elder";
 RUN;
-
+ 
 *Look at your log and next run PROC CONTENTS to see what changed;
 PROC CONTENTS DATA=lib.new_data;
 RUN;
-```  
-- The statement may be writen without the **ELSE IF** and **ELSE** portions  
-
-## Filetering data using the IF statement    
-- We can filter based on a variable using the IF statement  
+``` 
+- The statement may be written without the **ELSE IF** and **ELSE** portions 
+ 
+## Filtering data using the IF statement   
+- We can filter based on a variable using the IF statement 
 ```SAS
 DATA new_data;
 SET existing_data;
 IF Sex = 'Male';
 RUN;
-
+ 
 *Look at your log and next run PROC CONTENTS to see what changed;
 PROC CONTENTS DATA=lib.new_data;
 RUN;
 ```
-
-## Filetering data using the WHERE clause    
-- We can filter based on a variable using the IF statement  
+ 
+## Filtering data using the WHERE clause   
+- We can filter based on a variable using the IF statement 
 ```SAS
 DATA new_data;
 SET existing_data;
 WHERE Sex = 'Male';
 RUN;
-
+ 
 *Look at your log and next run PROC CONTENTS to see what changed;
 PROC CONTENTS DATA=lib.new_data;
 RUN;
 ```
+ 
+## Sorting datasets 
+- To sort a dataset you use the **PROC** command not the DATA command 
+- You can determine which variable to sort on 
+```SAS
+PROC SORT DATA=PH614.NHANES_mini;
+BY Age;
+RUN;
+ 
+*Look at your log and next run PROC CONTENTS to see what changed;
+PROC CONTENTS DATA=lib.new_data;
+RUN;
+```
+ 
+## Review of Learning Objectives 
+- Create new data sets 
+- Rename variables 
+- Select variables
+- Drop variables 
+- Understand operators
+- Creating new variables 
+- Filter data with logic
+- Sort data 
+ 
+ 
+## Q&A 
+ 
+## Next... 
+- Univariate Analysis 
+- PROC UNIVARIATE 
+- PROC MEANS 
+- PROC FREQ 
+- Formatting variables 
 
-## Review of learning Objectives  
-- Create new data sets  
-- Rename variables  
-- Select variables 
-- Drop variables  
-- Understand operators 
-- Creating new variables  
-- Filter data with logic 
-- Sort data  
-- Formating vatiables 
+
