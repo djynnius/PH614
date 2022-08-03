@@ -31,7 +31,7 @@ RUN;
 - New data sets not prefixed with a library name will be temporary!
 - To make a permanent dataset make sure the library you want it to be in exists then... 
 ```SAS
-DATA lib.new_data;
+DATA PH614.new_data;
 RUN;
 ```
  
@@ -39,12 +39,12 @@ RUN;
 - Often we use existing data as the basis for our dataset in SAS. To do this we use the **SET** keyword 
 ```SAS
 *Create a new data set;
-DATA lib.new_data;
-SET lib.existing_data;
+DATA PH614.new_data2;
+SET PH614.NHANES_mini;
 RUN;
  
 *Look at your log and next run PROC CONTENTS to see if the new dataset was created correctly;
-PROC CONTENTS DATA=lib.new_data;
+PROC CONTENTS DATA=PH614.new_data2;
 RUN;
 ```
 - Note every time you use the **DATA** step you create a new dataset and if the name already exists it will overwrite the existing dataset!!! Watch out for this. 
@@ -56,13 +56,13 @@ RUN;
 - Use the **RENAME** keyword followed by old_var_name=new_var_name
 - You can have multiple of these rename pairs as you need 
 ```SAS 
-DATA PH614.new_data;
-SET PH614.existing_data;
+DATA PH614.new_data3;
+SET PH614.NHANES_mini;
 RENAME Sex=Gender Ethnicity=Race Education=Tranining;
 RUN;
  
 *Look at your log and next run PROC CONTENTS to see what changed;
-PROC CONTENTS DATA=lib.new_data;
+PROC CONTENTS DATA=PH614.new_data3;
 RUN;
 ``` 
  
@@ -71,13 +71,13 @@ RUN;
 - You can decide to keep some out of several variables in a new dataset without losing your original dataset 
 - To keep some variables use the keyword **KEEP** 
 ```SAS 
-DATA PH614.new_data;
-SET PH614.existing_data;
+DATA PH614.new_data4;
+SET PH614.NHANES_mini;
 KEEP Age Sex Race Education;
 RUN;
  
 *Look at your log and next run PROC CONTENTS to see what variables are kept;
-PROC CONTENTS DATA=lib.new_data;
+PROC CONTENTS DATA=PH614.new_data4;
 RUN;
 ``` 
  
@@ -85,13 +85,13 @@ RUN;
 - This is the opposite of keeping and serves where you want to drop a few variables you are not interested in 
 - The **DROP** keyword is what is required to achieve this 
 ```SAS 
-DATA PH614.new_data;
-SET PH614.existing_data;
+DATA PH614.new_data5;
+SET PH614.NHANES_mini;
 DROP Weight Height;
 RUN;
  
 *Look at your log and next run PROC CONTENTS to see what changed;
-PROC CONTENTS DATA=lib.new_data;
+PROC CONTENTS DATA=PH614.new_data5;
 RUN;
 ``` 
  
@@ -99,14 +99,14 @@ RUN;
 - You can combine the variable manipulation steps as required. 
 - Make sure you end each step with a semicolon 
 ```SAS 
-DATA PH614.new_data;
-SET PH614.existing_data;
+DATA PH614.new_data6;
+SET PH614.NHANES_mini;
 KEEP Age Sex Race Education Weight Height;
 RENAME Sex=Gender;
 RUN;
  
 *Look at your log and next run PROC CONTENTS to see what changed;
-PROC CONTENTS DATA=lib.new_data;
+PROC CONTENTS DATA=PH614.new_data6;
 RUN;
 ``` 
  
@@ -114,14 +114,14 @@ RUN;
 - SAS lets you carry out a couple of operations 
 - First, let's use the assignment operator **=** to create a new variable and set its value
 ```SAS
-DATA PH614.new_data;
-SET PH614.existing_data;
+DATA PH614.new_data7;
+SET PH614.NHANES_mini;
 Test = 4; *Numbers are written without quotes;
 Annother_test = "Hello"; *Non-numbers are written with quotes;
 RUN;
  
 *Look at your log and next run PROC CONTENTS to see what changed;
-PROC CONTENTS DATA=lib.new_data;
+PROC CONTENTS DATA=PH614.new_data7;
 RUN;
 ```
  
@@ -130,13 +130,13 @@ RUN;
 - SAS also supports operator precedence (PEMDAS)  
 - let's explore this
 ```SAS
-DATA PH614.new_data;
-SET PH614.existing_data;
+DATA PH614.new_data8;
+SET PH614.NHANES_mini;
 BMI = Weight/(Height*Height);
 RUN;
  
 *Look at your log and next run PROC CONTENTS to see what changed;
-PROC CONTENTS DATA=lib.new_data;
+PROC CONTENTS DATA=PH614.new_data8;
 RUN;
 ```
  
@@ -146,15 +146,15 @@ RUN;
 - Using this construct we can check for truth and decide to do something ifa properpere condition is met 
 - the typical construct uses the words **IF** condition **THEN** do something; Let's see an example 
 ```SAS
-DATA new_data;
-SET existing_data;
+DATA PH614.new_data9;
+SET PH614.NHANES_mini;
 IF Age < 18 THEN Age_group = "Child";
 ELSE IF 18 <= Age <= 60 THEN Age_group = "Adult";
 ELSE Age_group = "Elder";
 RUN;
  
 *Look at your log and next run PROC CONTENTS to see what changed;
-PROC CONTENTS DATA=lib.new_data;
+PROC CONTENTS DATA=PH614.new_data9;
 RUN;
 ``` 
 - The statement may be written without the **ELSE IF** and **ELSE** portions 
@@ -162,26 +162,26 @@ RUN;
 ## Filtering data using the IF statement   
 - We can filter based on a variable using the IF statement 
 ```SAS
-DATA new_data;
-SET existing_data;
+DATA PH614.new_data10;
+SET PH614.NHANES_mini;
 IF Sex = 'Male';
 RUN;
  
 *Look at your log and next run PROC CONTENTS to see what changed;
-PROC CONTENTS DATA=lib.new_data;
+PROC CONTENTS DATA=PH614.new_data10;
 RUN;
 ```
  
 ## Filtering data using the WHERE clause   
 - We can filter based on a variable using the IF statement 
 ```SAS
-DATA new_data;
-SET existing_data;
+DATA PH614.new_data11;
+SET PH614.NHANES_mini;
 WHERE Sex = 'Male';
 RUN;
  
 *Look at your log and next run PROC CONTENTS to see what changed;
-PROC CONTENTS DATA=lib.new_data;
+PROC CONTENTS DATA=PH614.new_data11;
 RUN;
 ```
  
@@ -189,12 +189,12 @@ RUN;
 - To sort a dataset you use the **PROC** command not the DATA command 
 - You can determine which variable to sort on 
 ```SAS
-PROC SORT DATA=PH614.NHANES_mini;
+PROC SORT DATA=PH614.new_data10;
 BY Age;
 RUN;
  
 *Look at your log and next run PROC CONTENTS to see what changed;
-PROC CONTENTS DATA=lib.new_data;
+PROC CONTENTS DATA=PH614.new_data10;
 RUN;
 ```
  
