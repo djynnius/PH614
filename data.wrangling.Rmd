@@ -18,7 +18,6 @@ output:
 - Understand operators 
 - Filter data with logic 
 - Creating new variables  
-- Merge two data sets based on an ID or to complete records  
 - Sort data  
 - Formating vatiables 
 
@@ -195,6 +194,5 @@ RUN;
 - Understand operators 
 - Creating new variables  
 - Filter data with logic 
-- Merge two data sets based on an ID or to complete records  
 - Sort data  
 - Formating vatiables 
