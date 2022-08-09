@@ -137,12 +137,23 @@ TABLE Education;
 RUN;
 ```  
 
-## Determining length of variables  
+## Setting length of variables values  
+- Sometimes variable values get truncated when creating new datasets  
+- You can correct this by setting a variable length that is sufficient for the longest value within the variable  
 ```SAS 
-DATA new_data;
-SET existing_data;
+DATA PH614.a;
+SET PH614.NHANES_mini;
 *Usually you dont need this for numeric variables;
-LENGTH new_categorical $10.;
+LENGTH BMI_Cat $12.;
+IF BMI = . THEN BMI_Cat = '';
+ELSE IF BMI < 18.5 THEN BMI_Cat = 'Underweight'; 
+ELSE IF 18.5 <= BMI <= 25 THEN BMI_Cat = 'Normal';
+ELSE IF 25 <= BMI < 30 THEN BMI_Cat = 'Overweight';
+ELSE BMI_Cat = 'Obese';
+RUN;
+
+PROC PRINT DATA=PH614.a (OBS=20);
+VAR BMI BMI_Cat;
 RUN;
 ```  
 
@@ -151,18 +162,18 @@ RUN;
 - This can be a problem when sharing analysis!  
 - To fix this problem temporary labels can be added to variables in datasets  
 ```SAS 
-DATA new_data;
-SET existing_data;
-LABEL cat_var='Descriptive name';
-LABEL num_var='A numeric variable';
+DATA PH614.b;
+SET PH614.NHANES_mini;
+LABEL Education='Highest education attained';
+LABEL BMI='Body mass index (kg/m^2)';
 RUN;
 
-PROC FREQ DATA=new_data;
-TABLE cat_var;
+PROC FREQ DATA=PH614.b;
+TABLE Education;
 RUN;
 
-PROC UNIVARIATE DATA=new_data;
-TABLE num_var;
+PROC UNIVARIATE DATA=PH614.b;
+VAR BMI;
 RUN;
 
 ```  
@@ -173,15 +184,25 @@ RUN;
 - Formats can be used by multiple datasets so does not require setting a dataset when defining them  
 ```SAS
 PROC FORMAT;
-*Numeric formats require just the format name;
-VALUE yesno 
-    0 = 'no'
-    1 = 'yes';
+*Categorical formats require just the format name with a $ sign in front;
+VALUE depression 
+    'N' = 'None'
+    'M' = 'Mild' 
+    'S' = 'Severe';
 
-*Categorical variables require a dollar sign;
-VALUE $sex 
-    'm' = 'Male' 
-    'f' = 'Female';  
+*Numeric variables dont require a dollar sign;
+VALUE severity 
+    0 = 'None' 
+    1 = 'Mild' 
+    2 = 'Moderate' 
+    3 = 'Severe'; 
+
+*Multiple variables can share a format;
+VALUE $yesno 
+    'y' = 'Yes' 
+    'n' = 'No' 
+    'Y' = 'Yes' 
+    'N' = 'No';
 RUN; 
 ```  
 
@@ -189,15 +210,15 @@ RUN;
 - Formats can be used in **DATA** or **PROC** steps  
 ```SAS  
 *You can now use the format in a DATA step;
-DATA new_var;
-SET existing_var;
-FORMAT Diabetes yesno. Sex $sex.;
+DATA PH614.c;
+SET PH614.NHANES_mini;
+FORMAT Diabetes yesno. PhysActive $yesno. Depressed $depression.;
 RUN;
 
 *You can also use the format in a PROC step;
-PROC FREQ DATA=new_data;
-TABLE cat_var;
-FORMAT cat_var $sex.;
+PROC FREQ DATA=PH614.NHANES_mini;
+TABLE Depression;
+FORMAT Depressed $depression.;
 RUN;
 ```   
 

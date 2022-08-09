@@ -229,12 +229,27 @@ RUN;</code></pre>
 TABLE Education;
 RUN;</code></pre>
 </div>
-<div id="determining-length-of-variables" class="slide section level2">
-<h1>Determining length of variables</h1>
-<pre class="sas"><code>DATA new_data;
-SET existing_data;
+<div id="setting-length-of-variables-values" class="slide section level2">
+<h1>Setting length of variables values</h1>
+<ul>
+<li>Sometimes variable values get truncated when creating new datasets<br />
+</li>
+<li>You can correct this by setting a variable length that is sufficient for the longest value within the variable<br />
+</li>
+</ul>
+<pre class="sas"><code>DATA PH614.a;
+SET PH614.NHANES_mini;
 *Usually you dont need this for numeric variables;
-LENGTH new_categorical $10.;
+LENGTH BMI_Cat $12.;
+IF BMI = . THEN BMI_Cat = &#39;&#39;;
+ELSE IF BMI &lt; 18.5 THEN BMI_Cat = &#39;Underweight&#39;; 
+ELSE IF 18.5 &lt;= BMI &lt;= 25 THEN BMI_Cat = &#39;Normal&#39;;
+ELSE IF 25 &lt;= BMI &lt; 30 THEN BMI_Cat = &#39;Overweight&#39;;
+ELSE BMI_Cat = &#39;Obese&#39;;
+RUN;
+
+PROC PRINT DATA=PH614.a (OBS=20);
+VAR BMI BMI_Cat;
 RUN;</code></pre>
 </div>
 <div id="descriptive-labels-for-variables" class="slide section level2">
@@ -247,18 +262,18 @@ RUN;</code></pre>
 <li>To fix this problem temporary labels can be added to variables in datasets<br />
 </li>
 </ul>
-<pre class="sas"><code>DATA new_data;
-SET existing_data;
-LABEL cat_var=&#39;Descriptive name&#39;;
-LABEL num_var=&#39;A numeric variable&#39;;
+<pre class="sas"><code>DATA PH614.b;
+SET PH614.NHANES_mini;
+LABEL Education=&#39;Highest education attained&#39;;
+LABEL BMI=&#39;Body mass index (kg/m^2)&#39;;
 RUN;
 
-PROC FREQ DATA=new_data;
-TABLE cat_var;
+PROC FREQ DATA=PH614.b;
+TABLE Education;
 RUN;
 
-PROC UNIVARIATE DATA=new_data;
-TABLE num_var;
+PROC UNIVARIATE DATA=PH614.b;
+VAR BMI;
 RUN;
 </code></pre>
 </div>
@@ -273,15 +288,25 @@ RUN;
 </li>
 </ul>
 <pre class="sas"><code>PROC FORMAT;
-*Numeric formats require just the format name;
-VALUE yesno 
-    0 = &#39;no&#39;
-    1 = &#39;yes&#39;;
+*Categorical formats require just the format name with a $ sign in front;
+VALUE depression 
+    &#39;N&#39; = &#39;None&#39;
+    &#39;M&#39; = &#39;Mild&#39; 
+    &#39;S&#39; = &#39;Severe&#39;;
 
-*Categorical variables require a dollar sign;
-VALUE $sex 
-    &#39;m&#39; = &#39;Male&#39; 
-    &#39;f&#39; = &#39;Female&#39;;  
+*Numeric variables dont require a dollar sign;
+VALUE severity 
+    0 = &#39;None&#39; 
+    1 = &#39;Mild&#39; 
+    2 = &#39;Moderate&#39; 
+    3 = &#39;Severe&#39;; 
+
+*Multiple variables can share a format;
+VALUE $yesno 
+    &#39;y&#39; = &#39;Yes&#39; 
+    &#39;n&#39; = &#39;No&#39; 
+    &#39;Y&#39; = &#39;Yes&#39; 
+    &#39;N&#39; = &#39;No&#39;;
 RUN; </code></pre>
 </div>
 <div id="using-the-format" class="slide section level2">
@@ -291,15 +316,15 @@ RUN; </code></pre>
 </li>
 </ul>
 <pre class="sas"><code>*You can now use the format in a DATA step;
-DATA new_var;
-SET existing_var;
-FORMAT Diabetes yesno. Sex $sex.;
+DATA PH614.c;
+SET PH614.NHANES_mini;
+FORMAT Diabetes yesno. PhysActive $yesno. Depressed $depression.;
 RUN;
 
 *You can also use the format in a PROC step;
-PROC FREQ DATA=new_data;
-TABLE cat_var;
-FORMAT cat_var $sex.;
+PROC FREQ DATA=PH614.NHANES_mini;
+TABLE Depression;
+FORMAT Depressed $depression.;
 RUN;</code></pre>
 </div>
 <div id="review-of-learning-objectives" class="slide section level2">
