@@ -318,7 +318,7 @@ RUN; </code></pre>
 <pre class="sas"><code>*You can now use the format in a DATA step;
 DATA PH614.c;
 SET PH614.NHANES_mini;
-FORMAT Diabetes yesno. PhysActive $yesno. Depressed $depression.;
+FORMAT Diabetes $yesno. PhysActive $yesno. Depressed $depression.;
 RUN;
 
 *You can also use the format in a PROC step;
