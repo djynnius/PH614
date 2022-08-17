@@ -13,7 +13,7 @@ output:
 ## Learning objectives  
 - Understand two way tables
 - Understand marginal probabilities  
-- Understand join probabilities   
+- Understand joint probabilities   
 - Understaning conditional probabilities 
 - Difference between probabilites and odds
 - Understanding Pearsons correlation coefficient 
@@ -99,7 +99,7 @@ RUN;
 ## Review of learning objectives  
 - Understand two way tables
 - Understand marginal probabilities  
-- Understand join probabilities   
+- Understand joint probabilities   
 - Understaning conditional probabilities 
 - Difference between probabilites and odds
 - Understanding Pearsons correlation coefficient 
